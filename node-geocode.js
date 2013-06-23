@@ -1,5 +1,5 @@
 var fs  = require('fs'),
-		d3_dsv = require('dsv'),
+		dsv = require('dsv'),
 		_   = require('underscore'),
 		$   = require('jquery');
 
@@ -26,13 +26,14 @@ function startTheShow(CONFIG, starting_index){
  
 function loadCSV(path){
 	var text_data = fs.readFileSync(path).toString();
-	var csv_data  = d3_dsv.csv.parse(text_data);
+	var csv_data  = dsv.csv.parse(text_data);
 	return csv_data
 };
 
 function processRows(arr, starting_index){
 	var total = arr.length;
-	checkForGeocoding(arr, starting_index, total)
+	bakeFile(arr)
+	// checkForGeocoding(arr, starting_index, total)
 };
 
 function checkForGeocoding(arr, index, total){
@@ -67,27 +68,27 @@ function checkForGeocoding(arr, index, total){
 			}else{
 				verbose('Unhandled error' + response.status + ' at row ' + (index+1) + ' of ' + total+'. Skipping, baking, resetting...');
 				proceedOrStop(arr, index, total, 'skip, bake, and reset');
-			}
-		})
+			};
+		});
 		.fail(function(err){
-			verbose('Ajax failed ' + err)
+			verbose('Ajax failed ' + err);
 			bakeFile(arr);
 		});
 	}else{
 		proceedOrStop(arr, index, total, 'already geocoded', 0);
-	}
-}
+	};
+};
 
 function bakeAndReset(arr, index, total){
 	bakeFile(arr);
 	STATS.number_processed = 0;
 	CONFIG.input = CONFIG.output;
 	startTheShow(CONFIG, index);
-}
+};
 function skipBakeAndReset(arr, index, total){
 	index++;
 	bakeAndReset(arr, index, total)
-}
+};
 function proceedToNext(arr, index, total, delay){
 	// If it's normal, either successful or skipped, make sure we haven't hit the end.
 	// If we have, bake the file.
@@ -109,7 +110,7 @@ function repeatRow(arr, index, total, delay){
 	// Don't change index because we're not advancing to the next row
 	// Pass in delay so you can give it the extra wait time
 	_.delay(checkForGeocoding, delay, arr, index, total)
-}
+};
 
 function proceedOrStop(arr, index, total, msg, delay){
 
@@ -120,9 +121,9 @@ function proceedOrStop(arr, index, total, msg, delay){
 	}else if(msg ==  'skip, bake, and reset'){
 		skipBakeAndReset(arr, index, total);
 	}else if(msg == 'already geocoded'){
-		proceedToNext(arr, index, total, delay)
-	}
-}
+		proceedToNext(arr, index, total, delay);
+	};
+};
 
 function getRowAddressFromTemplate(row){
 	var adrs_getter_arr = CONFIG.adrs_format.replace(/\{\{/g,'row["').replace(/\}\}/g,'"]').split(',');
@@ -140,31 +141,17 @@ function geocodeRow(row){
 function verbose(msg){
 	if (CONFIG.verbose == true){
 		console.log(msg)
-	}
-}
-
-function JSONtoCSV(json){
-	// Add the column headers as the first row
-	var csv = flattenForCSV(_.keys(json[0]));
-	_.each(json, function(row){
-		csv  += flattenForCSV(_.values(row));
-	});
-	return csv
+	};
 };
-
-function flattenForCSV(arr){
-	var arr_quoted = _.map(arr, function(item){return '"'+item+'"'});
-	return arr_quoted.toString() + "\n";
-}
 
 function bakeFile(json){
 	verbose('Baking file...');
-	var csv = JSONtoCSV(json);
+	var csv = dsv.csv.format(json);
 	writeFile(csv);
 };
 
 function writeFile(file){
-	fs.writeFileSync(CONFIG.output, file)
-}
+	fs.writeFileSync(CONFIG.output, file);
+};
 
 startTheShow(CONFIG, 0);
