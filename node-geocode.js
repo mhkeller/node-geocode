@@ -10,7 +10,7 @@ var CONFIG = {
 	delay: 100,
 	wait_time: 5000,
 	increase_delay_by: 50,
-	bake_file_every_n_row: 100, 
+	bake_file_every_n_rows: 100, 
 	verbose: true
 };
 
@@ -96,7 +96,7 @@ function proceedToNext(arr, index, total, delay){
 	index++; // Advance to the next row
 	STATS.number_processed++
 	if(index < total){
-		if(STATS.number_processed < CONFIG.bake_file_every_n_row){
+		if(STATS.number_processed < CONFIG.bake_file_every_n_rows){
 			_.delay(checkForGeocoding, delay, arr, index, total)
 		}else{
 			bakeAndReset(arr, index, total)
