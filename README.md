@@ -13,7 +13,7 @@ var CONFIG = {
 	adrs_format: '{{provider_street_address}}, {{provider_city}}, {{provider_state}}, {{provider_zip_code}}',
 	delay: 100,
 	wait_time: 5000,
-	increase_delay_by: 50,
+	increase_delay_by: 100,
 	bake_file_every_n_rows: 100, 
 	verbose: true
 };
