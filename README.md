@@ -27,3 +27,18 @@ var CONFIG = {
 ``increase_delay_by`` is the time that ``delay`` increases by every time you hit the rate limit.    
 ``bake_file_every_n_rows`` lets you specify how often you want to save the file during processing so you write incrementally. This will not stop the geocoding process -- it's more of an insurance policy that in case something goes wrong at the very end, you won't have to start from scratch.    
 ``verbose`` set to false to silence log messages.    
+
+## Install dependencies
+
+````
+npm install fs
+````
+````
+npm install dsv
+````
+````
+npm install underscore
+````
+````
+npm install jquery
+````
