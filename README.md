@@ -45,4 +45,4 @@ npm install jquery
 
 #### TODO
 
-	1. Add ability to reference a Google Doc and update each row.
+  1. Add ability to reference a Google Doc and update each row.
