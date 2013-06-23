@@ -19,11 +19,11 @@ var CONFIG = {
 };
 ````
 
-``input`` is the path to the csv to geocode.
-``output`` is the path to the csv to write.
-``adrs_format`` takes the names of your columns in ``{{ }}``. Any other formatting, such as the commas you see, are passed in as plain-text.
-``delay`` is the time, in milliseconds, in between requests.
-``wait_time`` is the time to wait after you hit the rate limit before starting up again.
-``increase_delay_by`` is the time that ``delay`` increases by every time you hit the rate limit.
-``bake_file_every_n_rows`` lets you specify how often you want to save the file during processing so you write incrementally. This will not stop the geocoding process -- it's more of an insurance policy that in case something goes wrong at the very end, you won't have to start from scratch.
-``verbose`` set to false to silence log messages.
+``input`` is the path to the csv to geocode.  
+``output`` is the path to the csv to write.  
+``adrs_format`` takes the names of your columns in ``{{ }}``. Any other formatting, such as the commas you see, are passed in as plain-text.  
+``delay`` is the time, in milliseconds, in between requests.  
+``wait_time`` is the time to wait after you hit the rate limit before starting up again.  
+``increase_delay_by`` is the time that ``delay`` increases by every time you hit the rate limit.  
+``bake_file_every_n_rows`` lets you specify how often you want to save the file during processing so you write incrementally. This will not stop the geocoding process -- it's more of an insurance policy that in case something goes wrong at the very end, you won't have to start from scratch.  
+``verbose`` set to false to silence log messages.  
