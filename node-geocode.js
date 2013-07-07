@@ -4,7 +4,7 @@ var fs  = require('fs'),
 		$   = require('jquery');
 
 var CONFIG = {
-	input: 'us_hospitals_geocoded.csv',
+	input: 'us_hospitals.csv',
 	output: 'us_hospitals_geocoded.csv', 
 	adrs_format: '{{provider_street_address}}, {{provider_city}}, {{provider_state}}, {{provider_zip_code}}', // Write the format you want to put the address in with case-sensitive column headers in between the double brackets.
 	delay: 150,
