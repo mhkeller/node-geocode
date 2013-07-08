@@ -4,7 +4,7 @@ var fs  = require('fs'),
 		$   = require('jquery');
 
 var CONFIG = {
-	input: 'us_hospitals.csv',
+	input: 'us_hospitals_geocoded.csv',
 	output: 'us_hospitals_geocoded.csv', 
 	adrs_format: '{{provider_street_address}}, {{provider_city}}, {{provider_state}}, {{provider_zip_code}}', // Write the format you want to put the address in with case-sensitive column headers in between the double brackets.
 	delay: 150,
@@ -64,7 +64,7 @@ function checkForGeocoding(arr, index, total){
 				reportStatus('Hit rate limit ' +STATS.times_hit_ratelimit + ' times. '+response.status + ' at row ' + (index+1) + ' of ' + total+'. Waiting '+CONFIG.wait_time+' ms then increasing delay by '+CONFIG.increase_delay_by+' ms to '+CONFIG.delay+' ms...');
 				
 				// This shouldn't advance, it should redo the row
-				repeatRow(arr, index, total, CONFIG.delay);
+				repeatRow(arr, index, total, CONFIG.delay + CONFIG.wait_time);
 
 			}else if(response.status == "REQUEST_DENIED"){
 				reportStatus(response.status + ' at row ' + (index+1) + ' of ' + total+'. You might have "#" or special characters in your address string. Skipping...');
