@@ -31,9 +31,6 @@ var CONFIG = {
 ## Install dependencies
 
 ````
-npm install fs
-````
-````
 npm install dsv
 ````
 ````
