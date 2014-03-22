@@ -31,9 +31,6 @@ var CONFIG = {
 ## Install dependencies
 
 ````
-npm install fs
-````
-````
 npm install dsv
 ````
 ````
@@ -42,3 +39,7 @@ npm install underscore
 ````
 npm install jquery
 ````
+
+#### TODO
+
+  1. Add ability to reference a Google Doc and update each row.
