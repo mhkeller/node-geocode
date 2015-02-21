@@ -6,7 +6,7 @@ A geocoder in Node.js using the Google Maps API. It includes a number of feature
 
 All options are set in ``CONFIG``
 
-````
+````js
 var CONFIG = {
 	input: 'us_hospitals.csv',
 	output: 'us_hospitals_geocoded.csv', 
