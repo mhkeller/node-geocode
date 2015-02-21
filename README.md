@@ -28,18 +28,6 @@ var CONFIG = {
 ``bake_file_every_n_rows`` lets you specify how often you want to save the file during processing so you write incrementally. This will not stop the geocoding process -- it's more of an insurance policy that in case something goes wrong at the very end, you won't have to start from scratch.    
 ``verbose`` set to false to silence log messages.    
 
-## Install dependencies
-
-````
-npm install dsv
-````
-````
-npm install underscore
-````
-````
-npm install jquery
-````
-
 #### TODO
 
   1. Add ability to reference a Google Doc and update each row.

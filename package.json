@@ -1,0 +1,29 @@
+{
+  "name": "node-geocode",
+  "version": "1.0.0",
+  "description": "A geocoder in Node.js using the Google Maps API. It includes a number of features to help in geocoding large datasets of addresses such as automatically finding rows that need to be geocoded and playing nice with Google's rate limits.",
+  "main": "node-geocode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhkeller/node-geocode.git"
+  },
+  "author": "Michael Keller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mhkeller/node-geocode/issues"
+  },
+  "homepage": "https://github.com/mhkeller/node-geocode",
+  "keywords": [
+    "csv",
+    "geocode",
+    "mapping"
+  ],
+  "dependencies": {
+    "dsv": "0.0.4",
+    "jquery": "^2.1.3",
+    "underscore": "^1.8.1"
+  }
+}
